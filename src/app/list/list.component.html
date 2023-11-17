@@ -1,0 +1,25 @@
+<h1>Shopping List</h1>
+<div class="container">
+    Enter item name:
+    <input type="text" [(ngModel)]="name" class="inputclass"><br>
+    Enter item price:
+    <input type="text" [(ngModel)]="price" class="inputclass"><br>
+    Quantity:
+    <input type="number" [(ngModel)]="quantity" class="inputclass"><br><br>
+    <button type="button" (click)="add()" class="add">Add</button>
+    <ul>
+        <li *ngFor="let item of shoppingList; let i = index">
+            {{ item.name }} -> Price: ₹{{ item.price }} Quantity: {{ item.quantity }}
+            <br><br>
+            <button mat-icon-button (click)="increase(item)">
+                <mat-icon style="font-size: 30px;">+</mat-icon>
+            </button>
+            <span class="quantity"> {{ item.quantity }} </span>
+            <button mat-icon-button (click)="decrease(item)">
+                <mat-icon style="font-size: 30px;">-</mat-icon>
+            </button>
+            <button type="button" (click)="remove(i)" class="remove">Remove</button>
+            <p>Total Price: ₹{{ item.quantity * item.price }}</p>
+        </li>
+    </ul>
+</div>
